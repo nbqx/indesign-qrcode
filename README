@@ -2,5 +2,8 @@ Stand-Alone InDesign QRCode Generator
 Tested on InDesign-7.0 only
 
 usage:
-$ gem install sprockets
+(optionally)
+$ gem install bundler
+
+$ bundle install
 $ ruby build.rb
