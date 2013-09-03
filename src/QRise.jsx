@@ -4,7 +4,7 @@
 QRise = this.QRise = {};
 QRise.OPT = {
   typeNumber	: -1,
-  correctLevel	: QRErrorCorrectLevel.H
+  correctLevel	: QRErrorCorrectLevel.H // 30%
 };
 
 QRise.makeQRCodeData = function(txt,opt){
@@ -33,15 +33,16 @@ QRise.createRects = function(page,y,x,d){
   return rect;
 }
 
-QRise.makeQRCode = function(page,y,x,txt){
+QRise.makeQRCode = function(page,y,x,txt,fn){
   var grp = [];
   var data = this.makeQRCodeData(txt, this.OPT);
+  var proc = fn || this.createRects;
   for(var i=0; i<data.length; i++){
     var d = data[i];
     var _y = y+(i*1);
     for(var j=0; j<d.length; j++){
       var _x = x+(j*1);
-      var rc = this.createRects(page, _y, _x, d[j]);
+      var rc = proc(page, _y, _x, d[j]);
       grp.push(rc);
     }
   }
